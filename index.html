@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Yuu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Sarabun", sans-serif;
+      background: radial-gradient(circle at top, #ffe6f7, #ffb6c1, #fa9ea1);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto; 
+      position: relative;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      margin: 30px 0 10px 0;
+      text-align: center;
+      z-index: 2;
+    }
+
+    /* ปุ่มเล่นเพลง */
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 0.9em;
+      padding: 6px 12px;
+      border: none;
+      background-color: rgba(251, 6, 226, 0.8);
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .music-btn:hover {
+      background-color: rgb(252, 5, 149);
+      transform: scale(1.1);
+    }
+
+    /* ดาวพื้นหลัง */
+    .stars-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* กล่องเนื้อหา */
+    .content {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1000px;
+      gap: 20px;
+      margin-bottom: 50px;
+      z-index: 2;
+      flex-wrap: wrap;
+    }
+
+    .text-box {
+      flex: 1;
+      text-align: left;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+      min-width: 300px;
+    }
+
+    .text-box h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .text-box p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 220px);
+      grid-template-rows: repeat(2, 220px);
+      gap: 15px;
+      justify-content: flex-end;
+      align-content: flex-start;
+    }
+
+    .gallery img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    /* ค้างคาว */
+    .bat {
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      background: none;
+      animation: fly linear infinite;
+      transform-origin: center;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .bat::before, .bat::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      background: rgb(231, 13, 24);
+      border-radius: 50% 50% 0 0;
+      transform-origin: bottom center;
+      animation: flap 0.3s ease-in-out infinite alternate;
+    }
+
+    .bat::before { left: -20px; }
+    .bat::after { right: -20px; animation-delay: 0.15s; }
+
+    @keyframes flap {
+      from { transform: rotate(10deg); }
+      to { transform: rotate(-30deg); }
+    }
+
+    @keyframes fly {
+      from { transform: translateX(0) translateY(0) rotate(0deg); }
+      to { transform: translateX(110vw) translateY(-40vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- ดาว -->
+  <div class="stars-bg" id="stars"></div>
+
+  <!-- ปุ่มเล่นเพลง -->
+  <button class="music-btn" onclick="playMusic()">🎵</button>
+
+  <h1>Yuu Star Gallery</h1>
+
+  <div class="content">
+    <div class="text-box">
+      <h2>Yuu</h2>
+      <p>
+        สวัสดี! ฉันชื่อยู 🌙<br>
+        ฉันรักศิลปะ ดนตรี และความสงบของแสงดาว<br>
+        ยินดีต้อนรับสู่แกลเลอรีแห่งความฝันของฉัน
+      </p>
+    </div>
+
+    <div class="gallery">
+      <img src="C:\Users\User\Downloads\S__10338309.jpg" alt="อ้วนๆ" />
+      <img src="C:\Users\User\Downloads\S__10338311.jpg" alt="อ้วนๆ" />
+      <img src="C:\Users\User\Downloads\S__10338312.jpg" alt="อ้วนๆ" />
+      <img src="C:\Users\User\Downloads\S__10346500_0.jpg" alt="อ้วนๆ" />
+      <img src="C:\Users\User\Downloads\S__10346498_0.jpg" alt="อ้วนๆ" />
+      <img src="C:\Users\User\Downloads\S__10346501_0.jpg" alt="อ้วนๆ" />
+    </div>
+  </div>
+
+  <audio id="bgm" loop>
+    <source src="C:\Users\User\Downloads\FIFTY FIFTY - Cupid Twin VerAudio.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // สร้างดาว
+    const numStars = 160;
+    const starsContainer = document.getElementById("stars");
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      const size = Math.random() * 3 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 5}s`;
+      starsContainer.appendChild(star);
+    }
+
+    // ค้างคาว
+    const numBats = 20;
+    for (let i = 0; i < numBats; i++) {
+      const bat = document.createElement("div");
+      bat.classList.add("bat");
+      bat.style.top = `${Math.random() * 90}%`;
+      bat.style.left = `-${Math.random() * 100 + 50}px`;
+      const duration = Math.random() * 8 + 4;
+      bat.style.animationDuration = `${duration}s`;
+      bat.style.animationDelay = `${Math.random() * 6}s`;
+      bat.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(bat);
+    }
+
+    // เพลง
+    function playMusic() {
+      const audio = document.getElementById("bgm");
+      audio.volume = 0.4;
+      audio.play();
+    }
+  </script>
+</body>
+</html>
